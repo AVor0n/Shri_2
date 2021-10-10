@@ -1,0 +1,31 @@
+.home__wrapper{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home__content-wrapper{
+  grid-area: 'main';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home__content{
+  max-width: 264px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.home__icon{
+  height: 124px;
+  width: 124px;
+}
+
+.home__text{
+  margin-top: 32px;
+  margin-bottom: 24px;
+}

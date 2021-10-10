@@ -1,0 +1,71 @@
+.card{
+  display: grid;
+  padding: 12px 24px;
+  grid-template-columns: 20px 1fr 100px;
+  grid-template-rows: 20px 16px;
+  gap: 8px;
+  grid-template-areas:
+  'icon first-block third-block'
+  'icon second-block third-block';
+  font-size: 14px;
+
+  box-shadow: 0px 0px 1px rgba(67, 68, 69, 0.3), 0px 1px 1px rgba(67, 68, 69, 0.3);
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+
+.first-block{
+  grid-area: first-block;
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap:8px;
+}
+.second-block{
+  grid-area: second-block;
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 8px;
+}
+.third-block{
+  grid-area: third-block;
+  display: grid;
+  grid-template-rows: 16px 16px;
+  gap: 12px;
+}
+.build__branch{
+  margin-right: 8px;
+}
+.done{
+  color: var(--green-500);
+}
+.fail{
+  color: var(--red-500);
+}
+.pending{
+  color: var(--orange-500);
+}
+
+.build__id{
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 20px;
+}
+
+.build__message{
+  font-size: 15px;
+  line-height: 20px;
+}
+
+.build__commit-info,
+.build__author,
+.build__date,
+.build__time{
+  font-size: 13px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+}
+.label__icon{
+  margin-right: 4px;
+}

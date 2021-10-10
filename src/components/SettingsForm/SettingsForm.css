@@ -1,0 +1,32 @@
+.settings__form{
+  max-width: 474px;
+  display: flex;
+  flex-direction: column;
+  appearance: none;
+}
+.settings__title{
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+.settings__descr{
+  margin-bottom: 22px;
+}
+.settings__buttons{
+  display: grid;
+  grid-template-columns: repeat(2, min-content);
+  gap: 8px;
+}
+.settings__error{
+  color: red;
+  font-weight: bold;
+  margin-top: -27px;
+  margin-bottom: 8px;
+}
+@media screen and (max-width: 450px) {
+  .settings__buttons{
+    grid-template-columns: 1fr;
+  }
+  .settings__buttons .button{
+    justify-content: center;
+  }
+}

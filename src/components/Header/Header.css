@@ -1,0 +1,22 @@
+.header{
+  grid-area: header;
+}
+.header__wrapper{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__title{
+  color: var(--blue-grey-500);
+  margin: 10px 0;
+}
+.black{
+  color: black !important;
+}
+
+@media screen and (max-width: 450px) {
+  .header .button__text{
+    display:none;
+  }
+}
