@@ -1,0 +1,13 @@
+.btn-more__wrapper{
+  display: grid;
+  grid-template-columns: max-content;
+}
+
+@media screen and (max-width: 450px) {
+  .btn-more__wrapper{
+    grid-template-columns: 100%;
+  }
+  .btn-more__wrapper .button{
+    justify-content: center;
+  }
+}

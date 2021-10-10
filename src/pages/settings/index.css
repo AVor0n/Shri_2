@@ -1,5 +1,5 @@
 .settings__wrapper{
-  width: 100%;
+  margin-left: 0;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;

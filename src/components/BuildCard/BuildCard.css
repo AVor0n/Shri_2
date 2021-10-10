@@ -2,12 +2,11 @@
   display: grid;
   padding: 12px 24px;
   grid-template-columns: 20px 1fr 100px;
-  grid-template-rows: 20px 16px;
+  grid-template-rows: minmax(20px, min-content) 16px;
   gap: 8px;
   grid-template-areas:
   'icon first-block third-block'
   'icon second-block third-block';
-  font-size: 14px;
 
   box-shadow: 0px 0px 1px rgba(67, 68, 69, 0.3), 0px 1px 1px rgba(67, 68, 69, 0.3);
   border-radius: 6px;
@@ -29,9 +28,36 @@
 .third-block{
   grid-area: third-block;
   display: grid;
-  grid-template-rows: 16px 16px;
+  grid-template-rows: 1fr 1fr;
   gap: 12px;
 }
+
+@media screen and (max-width: 450px) {
+  .card{
+    padding: 12px 16px;
+    grid-template-columns: 24px 1fr;
+    grid-template-rows: repeat(3, min-content);
+    grid-template-areas:
+    'icon first-block'
+    'icon second-block'
+    'icon third-block';
+  }
+
+  .first-block{
+    grid-template-columns: 1fr;
+  }
+  .second-block{
+    grid-template-columns: 1fr;
+  }
+  .third-block{
+    border-top: 2px solid var(--blue-grey-50);
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    padding-top: 8px;
+    gap: 8px;
+  }
+}
+
 .build__branch{
   margin-right: 8px;
 }
