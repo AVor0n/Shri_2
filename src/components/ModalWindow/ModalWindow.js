@@ -9,6 +9,7 @@ const ModalWindow = (props) => {
       <div className="modal-content__wrapper">
         <h2 className="title settings__title">New build</h2>
         <TextInput
+          value=""
           label="Enter the commit hash which you want to build"
           placeholder="Commit hash"
           hasBtnClear

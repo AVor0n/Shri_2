@@ -7,7 +7,6 @@ class TextInput extends React.Component {
     this.state = {
       value: props.value,
       closeBtnVisible: false,
-      changeHandler: props.changeHandler,
     };
   }
 
@@ -34,14 +33,23 @@ class TextInput extends React.Component {
           </div>
         ) : null}
         <div className={`input input-${this.props.display}`}>
-          <input
-            className="input-field"
-            type="text"
-            value={this.props.value}
-            placeholder={this.props.placeholder}
-            onChange={this.handleChange}
-            required={this.props.required}
-          />
+          {this.props.handleChange ? (
+            <input
+              className="input-field"
+              type="text"
+              value={this.props.value}
+              placeholder={this.props.placeholder}
+              onChange={this.handleChange}
+              required={this.props.required}
+            />
+          ) : (
+            <input
+              className="input-field"
+              type="text"
+              placeholder={this.props.placeholder}
+              required={this.props.required}
+            />
+          )}
 
           {this.state.closeBtnVisible ? (
             <div className="clear-btn" onClick={this.clearClickHandler} />
