@@ -45,9 +45,11 @@ class SettingsForm extends React.Component {
     });
   };
   handleChangeSyncPeriod = (event) => {
-    this.setState({
-      syncPeriod: event.target.value,
-    });
+    const value = event.target.value;
+    if (Number.isInteger(+value))
+      this.setState({
+        syncPeriod: event.target.value,
+      });
   };
 
   render() {
