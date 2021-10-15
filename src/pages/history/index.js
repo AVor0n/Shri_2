@@ -1,26 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { ContextApp } from '../../model/reducer';
 import './index.css';
 import Header from '../../components/Header/Header';
 import Button from '../../components/Button/Button';
 import Footer from '../../components/Footer/Footer';
 import BuildCard from '../../components/BuildCard/BuildCard';
 import ModalWindow from '../../components/ModalWindow/ModalWindow';
-import fakeBuilds from '../../model/fake-data';
 
 const HistoryPage = () => {
   const [modalVisible, setModalVisible] = useState(false);
-  const openModal = () => {
-    setModalVisible(true);
-  };
-  const closeModal = () => {
-    console.log(modalVisible);
-    setModalVisible(false);
-  };
+
+  const openModal = () => setModalVisible(true);
+  const closeModal = () => setModalVisible(false);
+
+  const { state, dispatch } = useContext(ContextApp);
 
   return (
     <React.Fragment>
       {modalVisible ? <ModalWindow handlerClick={closeModal} /> : null}
-      <Header text={'Placeholder Title'} black>
+      <Header text={state.repoName} black>
         <Button
           text="Run build"
           size="s"
@@ -33,7 +31,7 @@ const HistoryPage = () => {
 
       <main className="wrapper main__wrapper">
         <div className="build-list">
-          {fakeBuilds.map((build) => (
+          {state.builds.map((build) => (
             <BuildCard build={build} />
           ))}
 

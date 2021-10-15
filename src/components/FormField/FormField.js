@@ -1,9 +1,20 @@
 import './FormField.css';
 import React from 'react';
 
-const FormField = ({ type, label, before, after, placeholder, require }) => {
+const FormField = ({
+  value,
+  handlerChange,
+  type,
+  label,
+  before,
+  after,
+  placeholder,
+  require,
+}) => {
   let component;
   require = require ? ' label_require' : '';
+
+  const ownHandlerChange = (e) => handlerChange(e.target.value);
 
   switch (type) {
     case 'block':
@@ -13,6 +24,8 @@ const FormField = ({ type, label, before, after, placeholder, require }) => {
           <div className="input input_block">
             <input
               className="input__inner"
+              value={value}
+              onChange={ownHandlerChange}
               placeholder={placeholder}
               required={require}
             />
@@ -28,6 +41,8 @@ const FormField = ({ type, label, before, after, placeholder, require }) => {
           <span>{before}</span>
           <input
             className="input input_inline"
+            value={value}
+            onChange={ownHandlerChange}
             type="text"
             placeholder={placeholder}
           />

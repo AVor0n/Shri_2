@@ -1,27 +1,29 @@
-import React, { Component } from 'react';
+import React, { useReducer } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
+import { ContextApp, initialState, reducer } from '../../model/reducer';
 import './App.css';
 import HomePage from '../../pages/home';
 import SettingsPage from '../../pages/settings';
 import HistoryPage from '../../pages/history';
 
-class App extends Component {
-  render() {
-    const { history } = this.props;
+const App = (props) => {
+  const { history } = props;
+  const [state, dispatch] = useReducer(reducer, initialState);
 
-    return (
-      <div className="app">
+  return (
+    <div className="app">
+      <ContextApp.Provider value={{ state, dispatch }}>
         <Switch>
           <Route path="/settings" history={history}>
             <SettingsPage />
           </Route>
           <Route path="/" history={history}>
-            {true ? <HistoryPage /> : <HomePage />}
+            {state.repoName ? <HistoryPage /> : <HomePage />}
           </Route>
         </Switch>
-      </div>
-    );
-  }
-}
+      </ContextApp.Provider>
+    </div>
+  );
+};
 
 export default withRouter(App);

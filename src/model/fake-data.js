@@ -72,36 +72,6 @@ builds.push(
     'Philip Kirkorov',
     '21 янв, 03:06',
     '1 ч 20 мин'
-  ),
-  new Build(
-    1365,
-    'done',
-    'upgrade typescript to 3.8',
-    'master',
-    'b4636ab',
-    'Philip Kirkorov',
-    '21 янв, 03:06',
-    '1 ч 20 мин'
-  ),
-  new Build(
-    1364,
-    'fail',
-    'add documentation for postgres scaler',
-    'master',
-    '952e5567',
-    'Philip Kirkorov',
-    '21 янв, 03:06',
-    '1 ч 20 мин'
-  ),
-  new Build(
-    1362,
-    'pending',
-    'replace all `div` to `article`',
-    'master',
-    'e41e4cc',
-    'Philip Kirkorov',
-    '21 янв, 03:06',
-    '1 ч 20 мин'
   )
 );
 
