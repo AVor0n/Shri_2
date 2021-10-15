@@ -1,0 +1,84 @@
+/**Common*/
+.input{
+  box-sizing: border-box;
+  border: none;
+  border-radius: 4px;
+  outline: none;
+  border: 2px solid silver;
+}
+
+.input:focus{
+  border: 2px solid gray;
+}
+.input_missed{
+  border-color: var(--red-500);
+  background-color: rgba(250, 0, 0, 0.2);
+}
+/**Block input*/
+.form-field_block{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  padding: 10px 0 8px;
+}
+
+.label{
+  display: block;
+  margin-bottom: 4px;
+}
+
+.label_require::after{
+  content: ' *';
+  color: var(--red-500);
+}
+
+.input_block{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 36px;
+}
+.input_block:focus-within{
+  border: 2px solid gray;
+}
+.input__inner{
+  border: none;
+  outline: none;
+  line-height: 15px;
+  padding: 11px 13px 10px;
+}
+.input_missed .input__inner{
+  background-color: rgba(250, 0, 0, 0.2);
+}
+.clear-btn{
+  cursor: pointer;
+  padding: 10px;
+  align-items: center;
+  justify-content: center;
+  background: url('../../images/svg/clear.svg');
+  background-repeat: no-repeat;
+  background-size: 16px 16px;
+  background-position: center;
+  width: 36px;
+  height: 36px;
+  box-sizing: border-box;
+}
+
+/**Inline input*/
+.form-field_inline{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    line-height: 15px;
+    padding: 12px 0;
+}
+
+.input_inline{
+  width: 52px;
+  margin: 0 8px;
+  text-align: right;
+  line-height: 15px;
+  padding: 10px 13px 9px;
+}

@@ -1,6 +1,7 @@
 .header{
   grid-area: header;
 }
+
 .header__wrapper{
   display: flex;
   justify-content: space-between;
@@ -10,12 +11,24 @@
 .header__title{
   color: var(--blue-grey-500);
   margin: 10px 0;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+  letter-spacing: 0.25px;
 }
+
+.header__buttons{
+  display: grid;
+  grid-auto-flow: column;
+  gap: 8px;
+}
+
 .black{
   color: black !important;
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 500px) {
   .header .button__text{
     display:none;
   }

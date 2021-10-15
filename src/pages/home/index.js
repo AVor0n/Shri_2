@@ -18,6 +18,7 @@ class HomePage extends React.Component {
             href="/settings"
           />
         </Header>
+
         <main className="wrapper home__content-wrapper">
           <div className="home__content">
             <div className="home__icon icon_tools"></div>
@@ -32,7 +33,15 @@ class HomePage extends React.Component {
             />
           </div>
         </main>
-        <Footer />
+
+        <Footer
+          links={[
+            { text: 'Support', href: '#!' },
+            { text: 'Learning', href: '#!' },
+            { text: 'Русская версия', href: '#!' },
+          ]}
+          copyright="© 2021 Andrey Voronin"
+        />
       </React.Fragment>
     );
   }

@@ -14,14 +14,25 @@
   grid-auto-flow: column;
   gap: 8px;
 }
+.btn-more__wrapper{
+  display: grid;
+  grid-template-columns: max-content;
+}
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 500px) {
   .header .button__text{
     display:none;
+  }
+  .btn-more__wrapper{
+    grid-template-columns: 100%;
+  }
+  .btn-more__wrapper .button{
+    justify-content: center;
   }
 }
 
 .main__wrapper{
   display: flex;
   flex-direction: column;
+
 }

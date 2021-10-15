@@ -9,8 +9,11 @@
   align-items: center;
   justify-content: space-between;
 }
-.footer__link{
+.footer__text{
   line-height: 16px;
+  color: var(--blue-grey-500);
+}
+.footer__link{
   color: var(--blue-grey-500);
   text-decoration: none;
 }
@@ -21,12 +24,12 @@
   margin-left: 12px;
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 500px) {
   .footer__wrapper{
     flex-direction: column;
     align-items: flex-start;
   }
-  .footer__links-wrapper{
+  .footer__links{
     margin-bottom: 8px;
   }
 }

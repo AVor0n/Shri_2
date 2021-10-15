@@ -4,14 +4,23 @@ import SettingsForm from '../../components/SettingsForm/SettingsForm';
 import Footer from '../../components/Footer/Footer';
 import './index.css';
 
-const SettingsPage = ({ data, handlerSaveSettings }) => {
+const SettingsPage = () => {
   return (
     <React.Fragment>
       <Header text="School CI server" />
+
       <main className="wrapper settings__wrapper">
-        <SettingsForm data={data} handlerSaveSettings={handlerSaveSettings} />
+        <SettingsForm />
       </main>
-      <Footer />
+
+      <Footer
+        links={[
+          { text: 'Support', href: '#!' },
+          { text: 'Learning', href: '#!' },
+          { text: 'Русская версия', href: '#!' },
+        ]}
+        copyright="© 2021 Andrey Voronin"
+      />
     </React.Fragment>
   );
 };

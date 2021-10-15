@@ -3,26 +3,28 @@
   display: flex;
   flex-direction: column;
   appearance: none;
+  padding: 8px;
 }
 .settings__title{
-  margin-top: 8px;
   margin-bottom: 8px;
 }
 .settings__descr{
   margin-bottom: 22px;
+  color: var(--blue-grey-500);
 }
+.settings__form-fields{
+  display: grid;
+  grid-auto-flow: row;
+  margin-bottom: 12px;
+}
+
 .settings__buttons{
   display: grid;
   grid-template-columns: repeat(2, max-content);
   gap: 8px;
 }
-.settings__error{
-  color: red;
-  font-weight: bold;
-  margin-top: -27px;
-  margin-bottom: 8px;
-}
-@media screen and (max-width: 450px) {
+
+@media screen and (max-width: 500px) {
   .settings__buttons{
     grid-template-columns: 1fr;
   }

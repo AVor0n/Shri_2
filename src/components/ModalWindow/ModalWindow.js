@@ -1,33 +1,31 @@
 import React from 'react';
 import Button from '../Button/Button';
-import TextInput from '../TextInput/TextInput';
+import FormField from '../FormField/FormField';
 import './ModalWindow.css';
 
 const ModalWindow = (props) => {
   return (
-    <div className="modal__wrapper" onClick={props.handleClick}>
+    <div className="modal__wrapper">
       <div className="modal-content__wrapper">
         <h2 className="title settings__title">New build</h2>
-        <TextInput
-          value=""
+        <FormField
+          type="block"
           label="Enter the commit hash which you want to build"
           placeholder="Commit hash"
-          hasBtnClear
         />
         <div className="settings__buttons">
           <Button
             text="Run build"
             size="m"
             color="action"
-            href="/"
-            handleClick={props.handlerClick}
+            handlerClick={props.handlerClick}
           />
           <Button
             text="Cancel"
             size="m"
             color="control"
             href="/"
-            handleClick={props.handlerClick}
+            handlerClick={props.handlerClick}
           />
         </div>
       </div>

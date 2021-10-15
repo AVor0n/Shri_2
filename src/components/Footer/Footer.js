@@ -1,23 +1,18 @@
+import { Link } from 'react-router-dom';
 import './Footer.css';
 
-function Footer() {
+function Footer({ links, copyright }) {
   return (
     <footer className="footer">
       <div className="wrapper footer__wrapper">
-        <div className="footer__links-wrapper">
-          <a className="footer__link" href="#!">
-            Support
-          </a>
-          <a className="footer__link" href="#!">
-            Learning
-          </a>
-          <a className="footer__link" href="#!">
-            Русская версия
-          </a>
+        <div className="footer__links">
+          {links?.map(({ text, href }) => (
+            <Link className="footer__link" to={href}>
+              <span>{text}</span>
+            </Link>
+          ))}
         </div>
-        <a className="footer__link" href="#!">
-          © 2021 Andrey Voronin
-        </a>
+        <span className="footer__text">{copyright}</span>
       </div>
     </footer>
   );
