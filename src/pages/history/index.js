@@ -8,17 +8,18 @@ import BuildCard from '../../components/BuildCard/BuildCard';
 import ModalWindow from '../../components/ModalWindow/ModalWindow';
 
 const HistoryPage = () => {
+  let key_index = 0;
   const [modalVisible, setModalVisible] = useState(false);
 
   const openModal = () => setModalVisible(true);
   const closeModal = () => setModalVisible(false);
 
-  const { state, dispatch } = useContext(ContextApp);
+  const { state } = useContext(ContextApp);
 
   return (
     <React.Fragment>
-      {modalVisible ? <ModalWindow handlerClick={closeModal} /> : null}
-      <Header text={state.repoName} black>
+      {modalVisible ? <ModalWindow handlerCloseModal={closeModal} /> : null}
+      <Header text={state.formFields.repoName.value} black>
         <Button
           text="Run build"
           size="s"
@@ -32,7 +33,7 @@ const HistoryPage = () => {
       <main className="wrapper main__wrapper">
         <div className="build-list">
           {state.builds.map((build) => (
-            <BuildCard build={build} />
+            <BuildCard build={build} key={key_index++} />
           ))}
 
           <div className="btn-more__wrapper">

@@ -5,50 +5,8 @@ import './SettingsForm.css';
 import { ContextApp } from '../../model/reducer';
 
 const SettingsForm = () => {
+  let key_index = 0;
   const { state, dispatch } = useContext(ContextApp);
-  const formFields = [
-    {
-      value: state.buffer.repoName,
-      handlerChange: (value) => {
-        dispatch({ type: 'repoName_update', payload: value });
-      },
-      type: 'block',
-      label: 'GitHub repository',
-      placeholder: 'user-name/repo-name',
-      require: true,
-    },
-    {
-      value: state.buffer.buildCommand,
-      handlerChange: (value) => {
-        dispatch({ type: 'buildCommand_update', payload: value });
-      },
-      type: 'block',
-      label: 'Build command',
-      placeholder: 'npm ci && npm run build',
-      require: true,
-    },
-    {
-      value: state.buffer.mainBranch,
-      handlerChange: (value) => {
-        dispatch({ type: 'mainBranch_update', payload: value });
-      },
-      type: 'block',
-      label: 'Main branch',
-      placeholder: 'master',
-      require: false,
-    },
-    {
-      value: state.buffer.syncPeriod,
-      handlerChange: (value) => {
-        dispatch({ type: 'syncPeriod_update', payload: value });
-      },
-      type: 'inline',
-      before: 'Synchronize every',
-      placeholder: '10',
-      after: 'minutes',
-      require: false,
-    },
-  ];
 
   return (
     <form className="settings__form" onSubmit={(e) => e.preventDefault()}>
@@ -59,29 +17,25 @@ const SettingsForm = () => {
       </p>
 
       <div className="settings__form-fields">
-        {formFields.map(
-          ({
-            value,
-            handlerChange,
-            type,
-            before,
-            after,
-            label,
-            placeholder,
-            require,
-          }) => (
-            <FormField
-              value={value}
-              handlerChange={handlerChange}
-              type={type}
-              before={before}
-              after={after}
-              label={label}
-              placeholder={placeholder}
-              require={require}
-            ></FormField>
-          )
-        )}
+        {Object.entries(state.formFields).map(([fieldName, field]) => (
+          <FormField
+            value={field.buffer}
+            handlerChange={(value) => {
+              dispatch({
+                type: 'field_update',
+                field: fieldName,
+                payload: value,
+              });
+            }}
+            type={field.type}
+            before={field.before}
+            after={field.after}
+            label={field.label}
+            placeholder={field.placeholder}
+            require={field.require}
+            key={key_index++}
+          ></FormField>
+        ))}
       </div>
 
       <div className="settings__buttons">
@@ -90,14 +44,14 @@ const SettingsForm = () => {
           size="m"
           color="action"
           href="/"
-          handlerClick={() => dispatch({ type: 'save' })}
+          handlerClick={() => dispatch({ type: 'form_save' })}
         />
         <Button
           text="Cancel"
           size="m"
           color="control"
           href="/"
-          handlerClick={() => dispatch({ type: 'cancel' })}
+          handlerClick={() => dispatch({ type: 'form_cancel' })}
         />
       </div>
     </form>

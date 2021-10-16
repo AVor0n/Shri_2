@@ -15,6 +15,7 @@ const FormField = ({
   require = require ? ' label_require' : '';
 
   const ownHandlerChange = (e) => handlerChange(e.target.value);
+  const clearClickHandler = () => handlerChange('');
 
   switch (type) {
     case 'block':
@@ -29,7 +30,9 @@ const FormField = ({
               placeholder={placeholder}
               required={require}
             />
-            {true ? <span className="clear-btn" /> : null}
+            {value !== '' ? (
+              <span className="clear-btn" onClick={clearClickHandler} />
+            ) : null}
           </div>
         </label>
       );

@@ -9,6 +9,7 @@ import HistoryPage from '../../pages/history';
 const App = (props) => {
   const { history } = props;
   const [state, dispatch] = useReducer(reducer, initialState);
+  const hasSettingData = state.formFields.repoName.value !== '';
 
   return (
     <div className="app">
@@ -18,7 +19,7 @@ const App = (props) => {
             <SettingsPage />
           </Route>
           <Route path="/" history={history}>
-            {state.repoName ? <HistoryPage /> : <HomePage />}
+            {hasSettingData ? <HistoryPage /> : <HomePage />}
           </Route>
         </Switch>
       </ContextApp.Provider>
