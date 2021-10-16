@@ -16,7 +16,7 @@ const App = (props) => {
       <ContextApp.Provider value={{ state, dispatch }}>
         <Switch>
           <Route path="/settings" history={history}>
-            <SettingsPage />
+            <SettingsPage history={history} />
           </Route>
           <Route path="/" history={history}>
             {hasSettingData ? <HistoryPage /> : <HomePage />}

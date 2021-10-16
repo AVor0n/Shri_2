@@ -4,13 +4,13 @@ import SettingsForm from '../../components/SettingsForm/SettingsForm';
 import Footer from '../../components/Footer/Footer';
 import './index.css';
 
-const SettingsPage = () => {
+const SettingsPage = ({ history }) => {
   return (
     <React.Fragment>
       <Header text="School CI server" />
 
       <main className="wrapper settings__wrapper">
-        <SettingsForm />
+        <SettingsForm history={history} />
       </main>
 
       <Footer

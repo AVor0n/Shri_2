@@ -3,6 +3,7 @@ import React from 'react';
 
 const FormField = ({
   value,
+  isValid,
   handlerChange,
   type,
   label,
@@ -13,8 +14,13 @@ const FormField = ({
 }) => {
   let component;
   require = require ? ' label_require' : '';
+  isValid = !isValid ? ' input_missed' : '';
 
   const ownHandlerChange = (e) => handlerChange(e.target.value);
+  const ownHandlerChangeNumeric = (e) => {
+    const value = e.target.value;
+    if (Number.isInteger(+value)) handlerChange(value);
+  };
   const clearClickHandler = () => handlerChange('');
 
   switch (type) {
@@ -22,7 +28,7 @@ const FormField = ({
       component = (
         <label className="form-field_block">
           <span className={`label ${require}`}>{label}</span>
-          <div className="input input_block">
+          <div className={'input input_block' + isValid}>
             <input
               className="input__inner"
               value={value}
@@ -43,9 +49,10 @@ const FormField = ({
         <div className="form-field_inline">
           <span>{before}</span>
           <input
-            className="input input_inline"
+            className={'input input_inline' + isValid}
             value={value}
-            onChange={ownHandlerChange}
+            onChange={ownHandlerChangeNumeric}
+            inputMode="numeric"
             type="text"
             placeholder={placeholder}
           />

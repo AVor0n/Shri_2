@@ -9,6 +9,7 @@ export const initialState = {
       value: '',
       defaultValue: '',
       buffer: '',
+      isValid: true,
       type: 'block',
       label: 'GitHub repository',
       placeholder: 'user-name/repo-name',
@@ -18,6 +19,7 @@ export const initialState = {
       value: '',
       defaultValue: '',
       buffer: '',
+      isValid: true,
       type: 'block',
       label: 'Build command',
       placeholder: 'npm ci && npm run build',
@@ -27,6 +29,7 @@ export const initialState = {
       value: '',
       defaultValue: 'master',
       buffer: '',
+      isValid: true,
       type: 'block',
       label: 'Main branch',
       placeholder: 'master',
@@ -36,6 +39,7 @@ export const initialState = {
       value: '',
       defaultValue: '10',
       buffer: '',
+      isValid: true,
       type: 'inline',
       before: 'Synchronize every',
       placeholder: '10',
@@ -52,6 +56,16 @@ export const reducer = (state, action) => {
     case 'field_update': {
       const newState = Object.assign({}, state);
       newState.formFields[action.field].buffer = action.payload;
+      return newState;
+    }
+    case 'form_check': {
+      const newState = Object.assign({}, state);
+      Object.values(newState.formFields).map((field) => {
+        if (field.require) {
+          field.isValid = field.buffer !== '';
+        }
+        return null; //Без возврата линтер ругается
+      });
       return newState;
     }
     case 'form_save': {
