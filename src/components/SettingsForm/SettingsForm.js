@@ -8,7 +8,7 @@ const SettingsForm = () => {
   const { state, dispatch } = useContext(ContextApp);
   const formFields = [
     {
-      value: state.repoName,
+      value: state.buffer.repoName,
       handlerChange: (value) => {
         dispatch({ type: 'repoName_update', payload: value });
       },
@@ -18,7 +18,7 @@ const SettingsForm = () => {
       require: true,
     },
     {
-      value: state.buildCommand,
+      value: state.buffer.buildCommand,
       handlerChange: (value) => {
         dispatch({ type: 'buildCommand_update', payload: value });
       },
@@ -28,7 +28,7 @@ const SettingsForm = () => {
       require: true,
     },
     {
-      value: state.mainBranch,
+      value: state.buffer.mainBranch,
       handlerChange: (value) => {
         dispatch({ type: 'mainBranch_update', payload: value });
       },
@@ -38,7 +38,7 @@ const SettingsForm = () => {
       require: false,
     },
     {
-      value: state.syncPeriod,
+      value: state.buffer.syncPeriod,
       handlerChange: (value) => {
         dispatch({ type: 'syncPeriod_update', payload: value });
       },
@@ -85,8 +85,20 @@ const SettingsForm = () => {
       </div>
 
       <div className="settings__buttons">
-        <Button text="Save" size="m" color="action" href="/" />
-        <Button text="Cancel" size="m" color="control" href="/" />
+        <Button
+          text="Save"
+          size="m"
+          color="action"
+          href="/"
+          handlerClick={() => dispatch({ type: 'save' })}
+        />
+        <Button
+          text="Cancel"
+          size="m"
+          color="control"
+          href="/"
+          handlerClick={() => dispatch({ type: 'cancel' })}
+        />
       </div>
     </form>
   );
