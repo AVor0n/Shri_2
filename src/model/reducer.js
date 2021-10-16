@@ -1,6 +1,5 @@
 import React from 'react';
-import fakeBuilds from './fake-data';
-
+import { fakeBuilds, createRandomBuild } from './fake-data';
 export const ContextApp = React.createContext();
 
 export const initialState = {
@@ -90,7 +89,12 @@ export const reducer = (state, action) => {
     }
     case 'build_run': {
       const newState = Object.assign({}, state);
-      newState.newBuild = '';
+      if (state.newBuild !== '') {
+        const id = state.builds[0].id + 1;
+        const newBuild = createRandomBuild(id, state.newBuild);
+        newState.builds.unshift(newBuild);
+        newState.newBuild = '';
+      }
       return newState;
     }
     case 'build_cancel': {

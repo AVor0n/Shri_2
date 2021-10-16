@@ -1,18 +1,23 @@
-class Build {
-  constructor(id, status, message, author, branch, commit, date, time) {
-    this.id = id;
-    this.status = status;
-    this.message = message;
-    this.author = author;
-    this.branch = branch;
-    this.commit = commit;
-    this.date = date;
-    this.time = time;
-  }
-}
-const builds = [];
+import Build from './Build';
 
-builds.push(
+const fakeBuilds = [];
+
+const createRandomBuild = (id, message) => {
+  const statuses = ['done', 'pending', 'fail'];
+  const status = statuses[Math.floor(Math.random() * statuses.length)];
+  return new Build(
+    id,
+    status,
+    message,
+    'master',
+    '9c9f0b9',
+    'Philip Kirkorov',
+    '21 янв, 03:06',
+    '1 ч 20 мин'
+  );
+};
+
+fakeBuilds.push(
   new Build(
     1368,
     'done',
@@ -75,4 +80,4 @@ builds.push(
   )
 );
 
-export default builds;
+export { fakeBuilds, createRandomBuild };
