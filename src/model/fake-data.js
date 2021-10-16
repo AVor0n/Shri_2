@@ -2,14 +2,14 @@ import Build from './Build';
 
 const fakeBuilds = [];
 
-const createRandomBuild = (id, message) => {
+const createRandomBuild = (id, message, branch) => {
   const statuses = ['done', 'pending', 'fail'];
   const status = statuses[Math.floor(Math.random() * statuses.length)];
   return new Build(
     id,
     status,
     message,
-    'master',
+    branch,
     '9c9f0b9',
     'Philip Kirkorov',
     '21 янв, 03:06',

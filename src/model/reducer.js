@@ -91,7 +91,9 @@ export const reducer = (state, action) => {
       const newState = Object.assign({}, state);
       if (state.newBuild !== '') {
         const id = state.builds[0].id + 1;
-        const newBuild = createRandomBuild(id, state.newBuild);
+        const message = state.newBuild;
+        const branch = state.formFields.mainBranch.value;
+        const newBuild = createRandomBuild(id, message, branch);
         newState.builds.unshift(newBuild);
         newState.newBuild = '';
       }
