@@ -4,22 +4,42 @@ import Button from '../Button/Button';
 import FormField from '../FormField/FormField';
 import './ModalWindow.css';
 
-const ModalWindow = (props) => {
+const ModalWindow = ({ visible, handlerCloseModal }) => {
   const { state, dispatch } = useContext(ContextApp);
+
+  const onKeydown = ({ key }) => {
+    switch (key) {
+      case 'Escape':
+        handlerCloseModal();
+        break;
+      default:
+        break;
+    }
+  };
+
+  React.useEffect(() => {
+    document.addEventListener('keydown', onKeydown);
+    return () => document.removeEventListener('keydown', onKeydown);
+  });
 
   const handlerClickRun = () => {
     dispatch({ type: 'build_run' });
-    props.handlerCloseModal();
+    handlerCloseModal();
   };
 
   const handlerClickCancel = () => {
     dispatch({ type: 'build_cancel' });
-    props.handlerCloseModal();
+    handlerCloseModal();
   };
 
+  if (!visible) return null;
+
   return (
-    <div className="modal__wrapper">
-      <div className="modal-content__wrapper">
+    <div className="modal__wrapper" onClick={handlerCloseModal}>
+      <div
+        className="modal-content__wrapper"
+        onClick={(e) => e.stopPropagation()}
+      >
         <h2 className="title settings__title">New build</h2>
         <FormField
           value={state.newBuild}
@@ -32,6 +52,7 @@ const ModalWindow = (props) => {
           type="block"
           label="Enter the commit hash which you want to build"
           placeholder="Commit hash"
+          isValid="true"
         />
         <div className="settings__buttons">
           <Button

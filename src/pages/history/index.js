@@ -18,7 +18,7 @@ const HistoryPage = () => {
 
   return (
     <React.Fragment>
-      {modalVisible ? <ModalWindow handlerCloseModal={closeModal} /> : null}
+      <ModalWindow visible={modalVisible} handlerCloseModal={closeModal} />
       <Header text={state.formFields.repoName.value} black>
         <Button
           text="Run build"
