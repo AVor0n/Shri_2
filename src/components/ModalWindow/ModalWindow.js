@@ -19,6 +19,19 @@ const ModalWindow = ({ visible, handlerCloseModal }) => {
 
   React.useEffect(() => {
     document.addEventListener('keydown', onKeydown);
+
+    const allNodes = document.querySelectorAll('*');
+    const modal = document.querySelector('.modal-content__wrapper');
+
+    for (let node of allNodes) {
+      node.addEventListener('focus', (e) => {
+        if (visible && !modal.contains(e.target)) {
+          e.stopPropagation();
+          modal.focus();
+        }
+      });
+    }
+
     return () => document.removeEventListener('keydown', onKeydown);
   });
 
@@ -39,6 +52,7 @@ const ModalWindow = ({ visible, handlerCloseModal }) => {
       <div
         className="modal-content__wrapper"
         onClick={(e) => e.stopPropagation()}
+        tabIndex={visible ? 0 : -1}
       >
         <h2 className="title settings__title">New build</h2>
         <FormField
@@ -59,14 +73,12 @@ const ModalWindow = ({ visible, handlerCloseModal }) => {
             text="Run build"
             size="m"
             color="action"
-            href="/"
             handlerClick={handlerClickRun}
           />
           <Button
             text="Cancel"
             size="m"
             color="control"
-            href="/"
             handlerClick={handlerClickCancel}
           />
         </div>
