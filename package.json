@@ -1,5 +1,9 @@
 {
   "name": "homework_2-react",
+  "engineStrict": true,
+  "engines": {
+    "node": "~16.10"
+  },
   "version": "0.1.0",
   "private": true,
   "dependencies": {
